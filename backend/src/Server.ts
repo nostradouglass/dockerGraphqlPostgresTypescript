@@ -6,6 +6,7 @@ import schema from './graphql/schema/schema'
 import express, { NextFunction, Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import 'express-async-errors';
+import cors from 'cors'
 
 import BaseRouter from './routes';
 import { graphqlHTTP } from 'express-graphql';
@@ -23,6 +24,8 @@ const { BAD_REQUEST } = StatusCodes;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
+
+app.use(cors())
 
 // Show routes called in console during development
 if (process.env.NODE_ENV === 'development') {
