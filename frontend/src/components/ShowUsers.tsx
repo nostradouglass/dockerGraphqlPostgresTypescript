@@ -5,7 +5,7 @@ export const ShowUsers = () => {
   const { loading, data } = useQuery(FETCH_USERS);
 
   const mapUsers = () => {
-    if (loading) {
+    if (loading || !data) {
       return <li>Loading</li>;
     } else {
       return data.users.map((user: any) => {
